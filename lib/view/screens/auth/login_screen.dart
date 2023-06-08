@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sixvalley_vendor_app/helper/email_checker.dart';
@@ -153,6 +155,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                       }else if (_password.length < 6) {
                         showCustomSnackBar(getTranslated('password_should_be', context), context);
                       }else {authProvider.login(context, emailAddress: _email, password: _password).then((status) async {
+                        log('St ${status.response.toString()}');
                           if (status.response.statusCode == 200) {
                             if (authProvider.isActiveRememberMe) {
                               authProvider.saveUserNumberAndPassword(_email, _password);

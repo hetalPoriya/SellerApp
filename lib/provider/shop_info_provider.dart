@@ -1,4 +1,5 @@
 
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -53,6 +54,7 @@ class ShopProvider extends ChangeNotifier {
   bool vacationIsOn = false;
 
   void checkVacation(String vacationEndDate){
+    log('Va ${vacationEndDate}');
       DateTime vacationDate = DateTime.parse(vacationEndDate);
       final today = DateTime.now();
       final difference = vacationDate.difference(today).inDays;
